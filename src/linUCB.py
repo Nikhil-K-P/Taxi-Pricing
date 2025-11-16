@@ -37,9 +37,9 @@ class MultiArmBandit:
         for i in range(self.N):
             contextVectorT = np.transpose(contextVector)
             estimatedPayoff = contextVectorT @ coefficientVector[i]
-            confidenceBounf = self.alpha * np.sqrt(contextVectorT @ self.invRidgeMatrix[i] @ contextVector)
+            confidenceBound = self.alpha * np.sqrt(contextVectorT @ self.invRidgeMatrix[i] @ contextVector)
 
-            self.armSet[i] = estimatedPayoff + confidenceBounf
+            self.armSet[i] = estimatedPayoff + confidenceBound
         
         selectedArm = np.argmax(self.armSet)
         return selectedArm
